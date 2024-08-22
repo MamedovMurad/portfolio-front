@@ -4,24 +4,43 @@ import { Button, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import logo from "../../assets/logo-dark.svg"
 import { Link } from "react-router-dom";
-
+import { Register } from "../../helpers/api/auth";
+import {useNavigate} from 'react-router-dom'
+import { notifications } from "@mantine/notifications";
 interface LoginPageProps {
 
 }
 
 const SignUpPage: FunctionComponent<LoginPageProps> = () => {
+    const navigate = useNavigate()
     const form = useForm({
         mode: 'uncontrolled',
         initialValues: {
             email: '',
             password: "",
+            name: "",
         },
 
         validate: {
             email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
-            password: (value) => (value.trim().length < 2 ? 'Value is too short' : null)
+            password: (value) => (value.trim().length < 2 ? 'Value is too short' : null),
+            name: (value) => (value.trim().length < 2 ? 'Value is too short' : null)
         },
     });
+
+    function onSubmit(params:any){
+        console.log(params);
+
+        Register(params).then((data:any)=>{
+            localStorage.setItem("agent",data?.data?.token)
+navigate('/dashboard')
+notifications.show({
+    title: 'You are logged in',
+    message: '',
+  })
+        })
+        
+    }
     return (
         <AuthPage>
             <div className=" flex justify-end px-5 mb-5">
@@ -31,31 +50,25 @@ const SignUpPage: FunctionComponent<LoginPageProps> = () => {
             <div className=" h-56 flex items-center justify-center">
                 <img src={logo} alt="" className=" h-full" />
             </div>
-            <form onSubmit={form.onSubmit((values) => console.log(values))} className=" px-5 flex-col flex justify-center h-max gap-y-2">
+            <form onSubmit={form.onSubmit((values) => onSubmit(values))} className=" px-5 flex-col flex justify-center h-max gap-y-2">
                 <TextInput
                     className=" text-dark"
                     withAsterisk
-                    label="Name"
+                    label="Full Name"
                     placeholder="name"
                     key={form.key('name')}
                     {...form.getInputProps('name')}
                 />
-                <TextInput
-                    className=" text-dark"
-                    withAsterisk
-                    label="Surname"
-                    placeholder="surname"
-                    key={form.key('surname')}
-                    {...form.getInputProps('surname')}
-                />
-                <TextInput
+
+                {/* <TextInput
                     className=" text-dark"
                     withAsterisk
                     label="Phone"
                     placeholder="phone"
                     key={form.key('phone')}
                     {...form.getInputProps('phone')}
-                />
+                /> */}
+
                 <TextInput
                     className=" text-dark"
                     withAsterisk

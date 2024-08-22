@@ -6,6 +6,8 @@ import { Suspense } from "react";
 import MainLayout from "../layouts";
 import PortfolioList from "../pages/portfolio";
 import PubcliView from "../pages/portfolio/PublicView";
+import Dashboard from "../pages/Dashboard";
+import CreatePortfolio from "../pages/Dashboard/CreatePortfolio";
 
 
 
@@ -26,7 +28,32 @@ const router = createBrowserRouter([
               element: <PubcliView/>
             }
             ],
+
+   
+
+
   },
+
+  {
+    element: <ProtectedRoutes />,
+    children: [
+     {
+        path: "/dashboard",
+       element: <Dashboard />,
+       children: [
+         {
+           path: 'create-portfolios',
+           element: <CreatePortfolio />
+         },
+       //  {
+       //   path: '/settings',
+       //    element: <Settings />
+       //  },
+       ]
+     }]
+    },
+    
+  
   { path: "sign-up", element: <SignUpPage /> },
   { path: "login", element: <LoginPage /> },
   // {
@@ -35,20 +62,8 @@ const router = createBrowserRouter([
   // },
 
   {
-    element: <ProtectedRoutes />,
-    // children: [
-    //   {
-    //     path: "/",
-    //     element: <LayoutDashboard />,
-    //     children: [
-    //       {
-    //         path: '/companies',
-    //         element: <Companies />
-    //       },
-    //       {
-    //         path: '/settings',
-    //         element: <Settings />
-    //       },
+   
+
     //       {
     //         path: '/roles',
     //         element: <RolePages />

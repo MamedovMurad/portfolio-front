@@ -3,13 +3,15 @@ import AuthPage from ".";
 import { Button, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import logo from "../../assets/logo-dark.svg"
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { Login } from "../../helpers/api/auth";
+import { notifications } from '@mantine/notifications';
 interface LoginPageProps {
 
 }
 
 const LoginPage: FunctionComponent<LoginPageProps> = () => {
+    const navigate = useNavigate()
     const form = useForm({
         mode: 'uncontrolled',
         initialValues: {
@@ -22,6 +24,20 @@ const LoginPage: FunctionComponent<LoginPageProps> = () => {
             password: (value) => (value.trim().length < 2 ? 'Value is too short' : null)
         },
     });
+
+    function onSubmit(params:any){
+        console.log(params);
+
+        Login(params).then((data:any)=>{
+            localStorage.setItem("agent",data?.data?.token)
+            navigate('/dashboard')
+            notifications.show({
+                title: 'You are logged in',
+                message: '',
+              })
+        })
+        
+    }
     return (
         <AuthPage>
             <div className=" flex justify-end px-5 mb-5">
@@ -31,7 +47,7 @@ const LoginPage: FunctionComponent<LoginPageProps> = () => {
             <div className=" h-56 flex items-center justify-center">
                 <img src={logo} alt="" className=" h-full" />
             </div>
-            <form onSubmit={form.onSubmit((values) => console.log(values))} className=" px-5 flex-col flex justify-center h-96 gap-y-2">
+            <form onSubmit={form.onSubmit((values) => onSubmit(values))} className=" px-5 flex-col flex justify-center h-96 gap-y-2">
                 <TextInput
                     className=" text-dark"
                     withAsterisk
