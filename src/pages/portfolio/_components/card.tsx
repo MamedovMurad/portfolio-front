@@ -16,7 +16,7 @@ const Card: FunctionComponent<CardProps> = ({img, title, author_name,id}) => {
     className="block  rounded-lg bg-white text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">
     <div className="relative overflow-hidden bg-cover bg-no-repeat">
       <img
-        className="rounded-t-lg h-60 w-full"
+        className="rounded-t-lg h-60 w-full object-cover"
         src={img??project}
         alt="" />
     </div>
@@ -28,7 +28,7 @@ const Card: FunctionComponent<CardProps> = ({img, title, author_name,id}) => {
       <div className=" flex justify-between items-center">
         <div className=" flex items-center gap-x-1">
           <span className=" overflow-hidden rounded-full ">
-            <img src={img??user} alt="" width={27} /></span>
+            <img src={img??user} alt="" width={27}  className=" object-cover h-7"/></span>
             <Link to={"/portfolios/"+id}>
             <p className=" font-semibold"> <i className=" text-xs font-light">by</i> {author_name}</p>
             </Link>

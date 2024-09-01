@@ -108,3 +108,4 @@ this.setHeader('content-type',"multipart/form-data")
   export const api = HttpClient.getInstance();
 
   export const file_url = "https://test.ramanacastle.com"
+    export const admin_file = "https://testadmin.ramanacastle.com"

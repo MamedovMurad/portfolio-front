@@ -8,6 +8,11 @@ import PortfolioList from "../pages/portfolio";
 import PubcliView from "../pages/portfolio/PublicView";
 import Dashboard from "../pages/Dashboard";
 import CreatePortfolio from "../pages/Dashboard/CreatePortfolio";
+import { ResetsPassword } from "../pages/auth/resetPassword";
+import { ForgotPassword } from "../pages/auth/forgetPassword";
+import Pricing from "../pages/pricing";
+import Contact from "../pages/contact";
+import About from "../pages/about";
 
 
 
@@ -26,7 +31,10 @@ const router = createBrowserRouter([
              },
             {path:"/portfolios/:id",
               element: <PubcliView/>
-            }
+            },
+            { path: "/about", element: <About /> },
+            { path: "/pricing", element: <Pricing /> },
+            { path: "/contact", element: <Contact /> },
             ],
 
    
@@ -55,7 +63,10 @@ const router = createBrowserRouter([
     
   
   { path: "sign-up", element: <SignUpPage /> },
+  { path: "reset-password", element: <ResetsPassword /> },
+  { path: "forgot-password", element: <ForgotPassword /> },
   { path: "login", element: <LoginPage /> },
+
   // {
   //   path: "/register/verify",
   //   element: (<VerifyPage />),
