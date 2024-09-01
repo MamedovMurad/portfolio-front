@@ -27,7 +27,9 @@ const About: FunctionComponent<AboutProps> = () => {
                 </div>
             </div>
             <div className="mt-12 md:mt-0">
-                <img src={admin_file+data?.image} alt="About Us Image" className="object-cover rounded-lg shadow-md" />
+               {
+                data?.image&& <img src={admin_file+data?.image} alt="About Us Image" className="object-cover rounded-lg shadow-md" />
+               }
             </div>
         </div>
     </div>
