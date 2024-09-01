@@ -10,9 +10,13 @@ const getpricing = () => {
 const getcontact = () => {
     return api.get(`contact`)
 }
+const getsliders = () => {
+    return api.get(`sliders`)
+}
 export {
   getabout,
 getpricing,
-getcontact
+getcontact,
+getsliders
    
 }
