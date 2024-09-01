@@ -43,7 +43,8 @@ notifications.show({
     }
     return (
         <AuthPage>
-            <div className=" flex justify-end px-5 mb-5">
+            <div className=" flex justify-between px-5 mb-5">
+            <h4><Link to={'/'} className="text-blue-500 text-sm">Go back</Link></h4>
                 <Link to={"/signup"} className=" text-blue-500 text-sm ">Log in</Link>
             </div>
             <h4 className=" text-dark text-2xl text-center mt-10">Get started Today! become a <span className=" font-semibold text-2xl">BIHARBOR</span></h4>
