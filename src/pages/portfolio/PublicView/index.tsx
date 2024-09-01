@@ -25,6 +25,8 @@ const PubcliView: FunctionComponent<PubcliViewProps> = () => {
             setdata(data?.data)
         })
 
+
+
     }, []);
 
 
@@ -36,9 +38,9 @@ const PubcliView: FunctionComponent<PubcliViewProps> = () => {
 
             <div className=" w-full h-full" onClick={() => setisiframe(!isiframe)}>
                 {
-                    isiframe ? <iframe allowFullScreen src={data?.link} className=" w-full md:h-[777px] h-52"></iframe>
+                    isiframe ? <iframe  allowFullScreen src={data?.link} height={"100%"} width={"100%"} className=" w-full m-0 p-0 overflow-x-hidden md:h-[500px] lg:h-[630px] xl:h-[777px] 2xl:h-[910px] h-[290px]"></iframe>
                         : <a href="#"
-                            className=" block w-full md:h-[777px] bg-contain  bg-no-repeat h-52 "
+                            className=" block w-full   xl:h-[777px] md:h-[500px] bg-contain  bg-no-repeat h-[400px] 2xl:h-[910px] "
                             style={{ backgroundImage: `url(${file_url + data?.cover_img})` }}>
 
                         </a>
