@@ -13,6 +13,7 @@ import { ForgotPassword } from "../pages/auth/forgetPassword";
 import Pricing from "../pages/pricing";
 import Contact from "../pages/contact";
 import About from "../pages/about";
+import Home from "../pages/home";
 
 
 
@@ -25,7 +26,14 @@ const router = createBrowserRouter([
          path: "/",
            element: <MainLayout />,
           children: [
+            {
+              
+              path: '/',
+                element: <Home />
+                },
+
              {
+              
            path: '/portfolios',
              element: <PortfolioList />
              },
