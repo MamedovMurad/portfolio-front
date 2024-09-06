@@ -4,6 +4,11 @@ const Login = (params: { email: string, password: string }) => {
     
     return api.post('login', params)
 }
+const GoogleLoginPost = (params: { token: any }) => {
+    
+    return api.post('auth/google', params)
+}
+
 const Register = (params: { email: string, name: string, password: string, password_repeat: string, surname: string }) => {
     return api.post('register', params)
 }
@@ -22,5 +27,5 @@ const logout = ()=>{
     
 }
 export {
-    Login, Register, Verify,GetMe,changePassword,logout
+    Login, Register, Verify,GetMe,changePassword,logout,GoogleLoginPost
 }

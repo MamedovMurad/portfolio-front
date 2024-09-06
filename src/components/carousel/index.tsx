@@ -1,6 +1,6 @@
 import { Carousel } from '@mantine/carousel';
-import { useMediaQuery } from '@mantine/hooks';
-import { Button, Paper, Title, useMantineTheme } from '@mantine/core';
+// import { useMediaQuery } from '@mantine/hooks';
+import { Button, Paper, Title } from '@mantine/core';
 import classes from './Demo.module.css';
 import '@mantine/carousel/styles.css';
 import { useEffect, useState } from 'react';
@@ -49,8 +49,8 @@ export function CarouselUI() {
       })
   }, []);
 
-  const theme = useMantineTheme();
-  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  // const theme = useMantineTheme();
+  // const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const slides = data?.map((item:any) => (
     <Carousel.Slide key={item.title}>
       <Card {...item} />

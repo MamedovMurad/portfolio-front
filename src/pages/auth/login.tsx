@@ -6,6 +6,7 @@ import logo from "../../assets/logo-dark.svg"
 import { Link, useNavigate } from "react-router-dom";
 import { Login } from "../../helpers/api/auth";
 import { notifications } from '@mantine/notifications';
+import LoginProvideButton from "./_components/loginButtonProvider";
 interface LoginPageProps {
 
 }
@@ -71,7 +72,7 @@ const LoginPage: FunctionComponent<LoginPageProps> = () => {
 
 
                 <Button type="submit" className=" bg-primary  w-full hover:bg-dark mt-2">Log in</Button>
-
+<LoginProvideButton/>
             </form>
 
 
