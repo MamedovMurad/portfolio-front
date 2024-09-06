@@ -9,6 +9,9 @@ export const GoogleLoginButton = () => {
     // Get the Google OAuth token
     const googleToken = response.credential;
 
+    console.log(response,'uuu');
+    
+
     try {
       // Send the token to your Laravel API for verification and login
       const result = await api.post('auth/google/callback', { token: googleToken });
