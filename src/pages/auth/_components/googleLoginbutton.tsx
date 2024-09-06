@@ -11,7 +11,7 @@ export const GoogleLoginButton = () => {
 
     try {
       // Send the token to your Laravel API for verification and login
-      const result = await api.post('auth/google/login', { token: googleToken });
+      const result = await api.post('auth/google/callback', { token: googleToken });
 
       console.log('User authenticated:', result?.data);
     } catch (error) {
