@@ -54,7 +54,7 @@ class HttpClient {
     return res.json();
   }
 
-  get(endpoint: string, options: RequestInit = {}) {
+  get(endpoint: string,  options: RequestInit = {}) {
     return this._fetchJSON(endpoint, {
       ...options,
       method: "GET",

@@ -1,10 +1,10 @@
 import { api } from "."
 
 const getList = (params: { limit: number, offset: number, isActive?:boolean }) => {
-    return api.get(`portfolios?limit=${params.limit}&offset=${params.offset}`, params)
+    return api.get(`portfolios?limit=${params.limit}&offset=${params.offset}`)
 }
 const show = (params: { id:string}) => {
-    return api.get(`portfolios/`+params.id, params)
+    return api.get(`portfolios/`+params.id)
 }
 const create = (params:any)=>{
     console.log(params);
