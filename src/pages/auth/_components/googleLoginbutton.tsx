@@ -1,7 +1,7 @@
 // GoogleLoginButton.js
 
 import { GoogleLogin } from '@react-oauth/google';
-import { GoogleLoginPost } from '../../../helpers/api/auth';
+import { api } from '../../../helpers/api';
 
 
 export const GoogleLoginButton = () => {
@@ -11,7 +11,7 @@ export const GoogleLoginButton = () => {
 
     try {
       // Send the token to your Laravel API for verification and login
-      const result:any = GoogleLoginPost({token:googleToken})
+      const result = await api.post('auth/google/login', { token: googleToken });
 
       console.log('User authenticated:', result?.data);
     } catch (error) {
