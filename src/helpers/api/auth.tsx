@@ -6,7 +6,7 @@ const Login = (params: { email: string, password: string }) => {
 }
 const GoogleLoginPost = (params: { token: any }) => {
     
-    return api.get('auth/google', params)
+    return api.post('auth/callback/google', params)
 }
 
 const Register = (params: { email: string, name: string, password: string, password_repeat: string, surname: string }) => {
