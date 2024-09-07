@@ -1,7 +1,7 @@
 import { api } from "."
 
-const getList = (params: { limit: number, offset: number, isActive?:boolean }) => {
-    return api.get(`portfolios?limit=${params.limit}&offset=${params.offset}`)
+const getList = (params: { limit: number, offset: number, isActive?:boolean ,category_id?:string|number }) => {
+    return api.get(`portfolios?category_id=${(params?.category_id||"")}&limit=${params.limit}&offset=${params.offset}`)
 }
 const show = (params: { id:string}) => {
     return api.get(`portfolios/`+params.id)

@@ -14,7 +14,7 @@ const getsliders = () => {
     return api.get(`sliders`)
 }
 export {
-  getabout,
+getabout,
 getpricing,
 getcontact,
 getsliders

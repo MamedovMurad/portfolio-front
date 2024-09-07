@@ -4,9 +4,11 @@ import { Button, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import logo from "../../assets/logo-dark.svg"
 import { Link } from "react-router-dom";
-import { Register } from "../../helpers/api/auth";
+import { GoogleLoginPost, Register } from "../../helpers/api/auth";
 import {useNavigate} from 'react-router-dom'
 import { notifications } from "@mantine/notifications";
+import Googlesvg from '../../assets/google.svg'
+
 interface LoginPageProps {
 
 }
@@ -41,6 +43,15 @@ notifications.show({
         })
         
     }
+
+    function GoogleButton(){
+        GoogleLoginPost().then((data:any)=>{
+            console.log(data?.url,'url');
+                  window.open(data?.url, '_blank');
+            
+        })
+    }
+
     return (
         <AuthPage>
             <div className=" flex justify-between px-5 mb-5">
@@ -94,6 +105,12 @@ notifications.show({
 
                 <Button type="submit" className=" bg-primary  w-full hover:bg-dark mt-2">Sign up</Button>
 
+                <div className="flex items-center justify-center mt-4 ">
+                    <button type="button" onClick={GoogleButton} className=" flex justify-center items-center gap-x-2 bg-text-primary text-dark w-full py-3">
+                       <img src={Googlesvg} className=" w-5"  alt="" />
+                        Sign up Google
+                    </button>
+                </div>
             </form>
 
 

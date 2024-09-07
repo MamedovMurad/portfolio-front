@@ -14,6 +14,7 @@ import Pricing from "../pages/pricing";
 import Contact from "../pages/contact";
 import About from "../pages/about";
 import Home from "../pages/home";
+import AuthGoogleRedirect from "../pages/auth/redirect";
 
 
 
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
            path: '/portfolios',
              element: <PortfolioList />
              },
+             {path:"/redirect", element:<AuthGoogleRedirect/>},
             {path:"/portfolios/:id",
               element: <PubcliView/>
             },
@@ -55,12 +57,19 @@ const router = createBrowserRouter([
     children: [
      {
         path: "/dashboard",
-       element: <Dashboard />,
+       element: <MainLayout />,
        children: [
-         {
-           path: 'create-portfolios',
-           element: <CreatePortfolio />
-         },
+        {
+          path:"/dashboard",
+          element:<Dashboard/>,
+          children:[
+            {
+              path: 'create-portfolios',
+              element: <CreatePortfolio />
+            },
+          ]
+        },
+       
        //  {
        //   path: '/settings',
        //    element: <Settings />

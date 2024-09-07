@@ -12,11 +12,13 @@ interface PortfolioListProps {
 
 const PortfolioList: FunctionComponent<PortfolioListProps> = () => {
     const [list, setlist]=useState<any>(null)
+    const [current, setcurrent] = useState<any>(null);
     useEffect(() => {
-        getList({limit:10,offset:10}).then((data)=>{
+        setlist(null)
+        getList({limit:10,category_id:current, offset:10}).then((data)=>{
             setlist(data?.data?.data)
         })
-    }, []);
+    }, [current]);
 
 
     
@@ -24,7 +26,7 @@ const PortfolioList: FunctionComponent<PortfolioListProps> = () => {
         <CarouselUI />
         <h4 className=" text-center my-10 font-semibold text-4xl text-text-primary">Members Portfolios</h4>
         <div className=" mb-5">
-            <Categories/>
+            <Categories callback={setcurrent} current={current}/>
         </div>
 <div className=" relative min-h-80 grid  md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center items-center gap-4">
 

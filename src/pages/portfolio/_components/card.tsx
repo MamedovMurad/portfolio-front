@@ -12,6 +12,8 @@ author_name:any
 }
 
 const Card: FunctionComponent<CardProps> = ({img, title, author_name,id}) => {
+  console.log(author_name);
+  
   return (<div
     className="block  rounded-lg bg-white text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">
     <div className="relative overflow-hidden bg-cover bg-no-repeat">

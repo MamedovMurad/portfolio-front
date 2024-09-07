@@ -4,14 +4,19 @@ import { Button, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import logo from "../../assets/logo-dark.svg"
 import { Link, useNavigate } from "react-router-dom";
-import { Login } from "../../helpers/api/auth";
+import {  GoogleLoginPost, Login } from "../../helpers/api/auth";
 import { notifications } from '@mantine/notifications';
-import LoginProvideButton from "./_components/loginButtonProvider";
+import Googlesvg from '../../assets/google.svg'
+import { useStore } from "../../store/aut";
 interface LoginPageProps {
 
 }
 
 const LoginPage: FunctionComponent<LoginPageProps> = () => {
+    const { setTrigger } = useStore((state) => ({
+        setTrigger: state.setTrigger,
+      }));
+    //   const [loading, setloading] = useState(false);
     const navigate = useNavigate()
     const form = useForm({
         mode: 'uncontrolled',
@@ -28,16 +33,27 @@ const LoginPage: FunctionComponent<LoginPageProps> = () => {
 
     function onSubmit(params:any){
         console.log(params);
-
         Login(params).then((data:any)=>{
             localStorage.setItem("agent",data?.data?.token)
+
+              
             navigate('/dashboard')
             notifications.show({
                 title: 'You are logged in',
                 message: '',
               })
+        }).then(()=>{
+            setTrigger()
         })
         
+    }
+
+    function GoogleButton(){
+        GoogleLoginPost().then((data:any)=>{
+            console.log(data?.url,'url');
+                  window.open(data?.url, '_blank');
+            
+        })
     }
     return (
         <AuthPage>
@@ -72,9 +88,15 @@ const LoginPage: FunctionComponent<LoginPageProps> = () => {
 
 
                 <Button type="submit" className=" bg-primary  w-full hover:bg-dark mt-2">Log in</Button>
-<LoginProvideButton/>
+                <div className="flex items-center justify-center mt-4 ">
+                    <button type="button" onClick={GoogleButton} className=" flex justify-center items-center gap-x-2 bg-text-primary text-dark w-full py-3">
+                       <img src={Googlesvg} className=" w-5"  alt="" />
+                        Log in Google
+                    </button>
+                </div>
             </form>
 
+         
 
         </AuthPage>);
 }

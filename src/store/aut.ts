@@ -1,8 +1,16 @@
-import { create } from 'zustand'
+import { create } from 'zustand';
 
-export const useStore = create((set) => ({
-  bears: 0,
-  increasePopulation: () => set((state:any) => ({ bears: state.bears + 1 })),
-  removeAllBears: () => set({ bears: 0 }),
-  updateBears: (newBears:any) => set({ bears: newBears }),
-}))
+interface StoreState {
+  user: any | null; 
+  trigger:boolean,// Replace `any` with a specific type if you have one
+  setUser: (newUser: any) => void; 
+  setTrigger:()=>void
+  // Replace `any` with a specific type if you have one
+}
+
+export const useStore = create<StoreState>((set) => ({
+  user: null,
+  trigger:false,
+  setUser: (newUser) => set(() => ({ user: newUser })),
+  setTrigger:() => set(() => ({ trigger:true  })),
+}));

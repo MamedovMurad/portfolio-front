@@ -12,7 +12,7 @@ const theme = createTheme({
 const App = () => (
     <MantineProvider theme={theme}>
         <Notifications />
-<div className=" bg-primary h-full text-white"><RouterApp/></div>
+<div className=" bg-primary md:h-full text-white"><RouterApp/></div>
 </MantineProvider>
 )
 
