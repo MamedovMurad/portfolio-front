@@ -41,6 +41,8 @@ class HttpClient {
 
     if (!res.ok) {
       if (res.status === 401) {
+        localStorage.clear();
+        window.location.href="/"
         throw new Error('Unauthorized: Please login again.');
       } else {
         throw new Error('Request failed with status ' + res.status);

@@ -10,6 +10,7 @@ import { BurgerMenu } from "../components/burger";
 import { useStore } from "../store/aut";
 import { GetMe } from "../helpers/api/auth";
 import { LoadingOverlay } from "@mantine/core";
+import { BurgerMenuUser } from "../components/burger/user";
 interface MainLayoutProps {
   
 }
@@ -18,7 +19,7 @@ const MainLayout: FunctionComponent<MainLayoutProps> = () => {
     const location = useLocation(); 
     console.log(location?.pathname);
     
-    const { user, setUser,trigger } = useStore((state) => ({
+    const { user, setUser } = useStore((state) => ({
         user: state.user,
         setUser: state.setUser,
         trigger:state.trigger
@@ -28,14 +29,18 @@ const MainLayout: FunctionComponent<MainLayoutProps> = () => {
       function getMeAuth (){
         setloading(true)
         GetMe().then((data)=>{
-            setUser(data?.data?.name)
+            setUser(data?.data)
         }).finally(()=>{
             setloading(false)
         })
       }
       useEffect(() => {
-     localStorage.getItem("agent")&& getMeAuth()
-      }, [trigger]);
+     
+     if ( localStorage.getItem("agent")) {
+        return getMeAuth()
+     }
+     return setUser(null)
+      }, [localStorage.getItem('agent')]);
     return (
      <>   <header className=" mb-20 ">
             <div className=" flex justify-center fixed top-0 w-full h-20 bg-dark z-10 ">
@@ -50,17 +55,21 @@ const MainLayout: FunctionComponent<MainLayoutProps> = () => {
 
                     <li className={" hidden md:block hover:underline transition-all duration-300    decoration-text-primary underline-offset-8 " 
                         +(location?.pathname=="/about"?"underline":"")}> 
-                        <Link to={'about'}>About</Link>
+                        <Link to={'/about'}>About</Link>
                         </li>
                     <li className={" hidden md:block hover:underline transition-all duration-300   decoration-text-primary underline-offset-8 " 
-                        +(location?.pathname=="/portfolios"?"underline":"")}> <Link to={'portfolios'}>Portfolios</Link></li>
+                        +(location?.pathname=="/portfolios"?"underline":"")}> <Link to={'/portfolios'}>Portfolios</Link></li>
                     <li className={" hidden md:block hover:underline transition-all duration-300   decoration-text-primary underline-offset-8 " 
-                        +(location?.pathname=="/pricing"?"underline":"")}> <Link to={'pricing'}>Courses</Link></li>
+                        +(location?.pathname=="/pricing"?"underline":"")}> <Link to={'/pricing'}>Courses</Link></li>
                     <li className={" hidden md:block hover:underline transition-all duration-300   decoration-text-primary underline-offset-8 " 
-                        +(location?.pathname=="/contact"?"underline":"")}><Link to={'contact'}>Contact</Link></li>
+                        +(location?.pathname=="/contact"?"underline":"")}><Link to={'/contact'}>Contact</Link></li>
+
                     <li className=" rounded border-text-primary border-[0.1px] py-1 px-4"> 
                         
-                        {user? <Link to={'/dashboard'}>{user}</Link>: <Link to={'/sign-up'}>
+                        {user? <BurgerMenuUser name={user?.name}/> : 
+                        
+                        
+                        <Link to={'/sign-up'}>
                         
                         {loading?  <LoadingOverlay
                         visible={loading}

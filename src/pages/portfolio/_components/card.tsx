@@ -1,21 +1,31 @@
 import { FunctionComponent } from "react";
 import share from "../../../assets/share.png"
-import user from "../../../assets/user.jpg"
 import project from "../../../assets/project.png"
 import { IconHeart } from '@tabler/icons-react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { BurgerMenuPortfolio } from "../../../components/burger/action";
 interface CardProps {
 img?:any,
 title:any,
 id:any
-author_name:any
+author_name:any,
+author_img?:string;
+deleteItem?:any;
 }
 
-const Card: FunctionComponent<CardProps> = ({img, title, author_name,id}) => {
+const Card: FunctionComponent<CardProps> = ({img, title, author_name,id, author_img, deleteItem}) => {
   console.log(author_name);
+  const navigate = useNavigate()
   
   return (<div
-    className="block  rounded-lg bg-white text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">
+  onClick={()=>navigate("/portfolios/"+id)}
+    className="block relative cursor-pointer  rounded-lg bg-white text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">
+      {
+        deleteItem&& <div onClick={(e)=>e.stopPropagation()} className=" absolute right-1 top-1 z-10 ">
+        
+          <BurgerMenuPortfolio  deleteItem={deleteItem}/>
+          </div>
+      }
     <div className="relative overflow-hidden bg-cover bg-no-repeat">
       <img
         className="rounded-t-lg h-60 w-full object-cover"
@@ -29,8 +39,10 @@ const Card: FunctionComponent<CardProps> = ({img, title, author_name,id}) => {
       </div>
       <div className=" flex justify-between items-center">
         <div className=" flex items-center gap-x-1">
-          <span className=" overflow-hidden rounded-full ">
-            <img src={img??user} alt="" width={27}  className=" object-cover h-7"/></span>
+   {
+    author_img&&       <span className=" overflow-hidden rounded-full ">
+            <img src={author_img} alt="" width={27}  className=" object-cover h-7"/></span>
+   }
             <Link to={"/portfolios/"+id}>
             <p className=" font-semibold"> <i className=" text-xs font-light">by</i> {author_name}</p>
             </Link>

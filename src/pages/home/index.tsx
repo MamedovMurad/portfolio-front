@@ -11,6 +11,7 @@ const Home: FunctionComponent<HomeProps> = () => {
     const [banner, setbanner] = useState<any>(null);
     const [before, setbefore] = useState<any>(null);
     const [video, setvideo] = useState<any>(null);
+    const [certificate, setcertificate] = useState<any>(null);
     const [loading, setloading] = useState(false);
     useEffect(() => {
         setloading(true)
@@ -25,6 +26,9 @@ const Home: FunctionComponent<HomeProps> = () => {
         })
         api.get("video").then((data)=>{
             setvideo(data?.data)
+        })
+        api.get("certificate-section").then((data)=>{
+            setcertificate(data?.data)
         })
     }, []);
     return ( 
@@ -52,6 +56,9 @@ const Home: FunctionComponent<HomeProps> = () => {
         </div>
 
         <VideoBanner data={video}/>
+       <section className="mt-4">
+       <VideoBanner data={certificate} sectionName="Explorer certificates" />
+       </section>
     </div> 
     }
   

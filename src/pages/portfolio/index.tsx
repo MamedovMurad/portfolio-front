@@ -31,7 +31,7 @@ const PortfolioList: FunctionComponent<PortfolioListProps> = () => {
 <div className=" relative min-h-80 grid  md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center items-center gap-4">
 
 {list?.map((item:any)=>(
-    <Card title={item.title} img={file_url+item.cover_img} author_name={item?.author?.name} id={item.id}/>
+    <Card title={item.title} author_img={item?.author?.image} img={file_url+item.cover_img} author_name={item?.author?.name} id={item.id}/>
 ))}
 
 

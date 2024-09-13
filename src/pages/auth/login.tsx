@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import AuthPage from ".";
-import { Button, TextInput } from '@mantine/core';
+// import { Button, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import logo from "../../assets/logo-dark.svg"
 import { Link, useNavigate } from "react-router-dom";
@@ -66,7 +66,7 @@ const LoginPage: FunctionComponent<LoginPageProps> = () => {
                 <img src={logo} alt="" className=" h-full" />
             </div>
             <form onSubmit={form.onSubmit((values) => onSubmit(values))} className=" px-5 flex-col flex justify-center h-96 gap-y-2">
-                <TextInput
+                {/* <TextInput
                     className=" text-dark"
                     withAsterisk
                     label="Email"
@@ -87,7 +87,7 @@ const LoginPage: FunctionComponent<LoginPageProps> = () => {
 
 
 
-                <Button type="submit" className=" bg-primary  w-full hover:bg-dark mt-2">Log in</Button>
+                <Button type="submit" className=" bg-primary  w-full hover:bg-dark mt-2">Log in</Button> */}
                 <div className="flex items-center justify-center mt-4 ">
                     <button type="button" onClick={GoogleButton} className=" flex justify-center items-center gap-x-2 bg-text-primary text-dark w-full py-3">
                        <img src={Googlesvg} className=" w-5"  alt="" />
@@ -98,7 +98,8 @@ const LoginPage: FunctionComponent<LoginPageProps> = () => {
 
          
 
-        </AuthPage>);
+        </AuthPage>
+        );
 }
 
 export default LoginPage;

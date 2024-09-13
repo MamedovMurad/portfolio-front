@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import AuthPage from ".";
-import { Button, TextInput } from '@mantine/core';
+// import { Button, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import logo from "../../assets/logo-dark.svg"
 import { Link } from "react-router-dom";
@@ -63,7 +63,7 @@ notifications.show({
                 <img src={logo} alt="" className=" h-full" />
             </div>
             <form onSubmit={form.onSubmit((values) => onSubmit(values))} className=" px-5 flex-col flex justify-center h-max gap-y-2">
-                <TextInput
+                {/* <TextInput
                     className=" text-dark"
                     withAsterisk
                     label="Full Name"
@@ -72,14 +72,7 @@ notifications.show({
                     {...form.getInputProps('name')}
                 />
 
-                {/* <TextInput
-                    className=" text-dark"
-                    withAsterisk
-                    label="Phone"
-                    placeholder="phone"
-                    key={form.key('phone')}
-                    {...form.getInputProps('phone')}
-                /> */}
+        
 
                 <TextInput
                     className=" text-dark"
@@ -103,7 +96,7 @@ notifications.show({
 
 
 
-                <Button type="submit" className=" bg-primary  w-full hover:bg-dark mt-2">Sign up</Button>
+                <Button type="submit" className=" bg-primary  w-full hover:bg-dark mt-2">Sign up</Button> */}
 
                 <div className="flex items-center justify-center mt-4 ">
                     <button type="button" onClick={GoogleButton} className=" flex justify-center items-center gap-x-2 bg-text-primary text-dark w-full py-3">

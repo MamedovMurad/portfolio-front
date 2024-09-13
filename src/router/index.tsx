@@ -15,6 +15,8 @@ import Contact from "../pages/contact";
 import About from "../pages/about";
 import Home from "../pages/home";
 import AuthGoogleRedirect from "../pages/auth/redirect";
+import DashboardIndex from "../pages/Dashboard/dahsboard";
+import CertifactePage from "../pages/certificates";
 
 
 
@@ -45,6 +47,7 @@ const router = createBrowserRouter([
             { path: "/about", element: <About /> },
             { path: "/pricing", element: <Pricing /> },
             { path: "/contact", element: <Contact /> },
+            { path: "/certificates", element: <CertifactePage /> },
             ],
 
    
@@ -63,6 +66,8 @@ const router = createBrowserRouter([
           path:"/dashboard",
           element:<Dashboard/>,
           children:[
+            {path:"",
+              element:<DashboardIndex/>,},
             {
               path: 'create-portfolios',
               element: <CreatePortfolio />

@@ -45,7 +45,7 @@ function CreatePortfolio() {
      console.log(data);
      form.reset()
 
-     navigate('/portfolios')
+     navigate('/dashboard')
      
 
 notifications.show({
@@ -56,7 +56,7 @@ message: '',
     
 }
   return (
-    <form onSubmit={form.onSubmit((values) => onSubmit(values))} className=' mx-40 p-20 h-full bg-text-primary text-dark rounded mt-5'>
+    <form onSubmit={form.onSubmit((values) => onSubmit(values))} className=' md:mx-40 p-3 md:p-20 h-full bg-text-primary text-dark rounded mt-5'>
      <h4 className=' text-center text-2xl font-semibold'>Create a new Portfolio</h4>
       <TextInput
         withAsterisk

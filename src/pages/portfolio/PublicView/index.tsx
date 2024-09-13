@@ -27,7 +27,7 @@ const PubcliView: FunctionComponent<PubcliViewProps> = () => {
 
 
 
-    }, []);
+    }, [location?.id]);
 
 
     console.log(data, 'data');
@@ -59,7 +59,7 @@ const PubcliView: FunctionComponent<PubcliViewProps> = () => {
                 <div className=" relative min-h-80 grid  md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center items-center gap-4">
 
                     {data?.other_portfolios?.data?.map((item: any) => (
-                        <Card title={item.title} img={file_url + item.cover_img} author_name={item?.author?.name} id={item.id} />
+                        <Card key={item?.id} author_img={item?.author?.image} title={item.title} img={file_url + item.cover_img} author_name={item?.author?.name} id={item.id} />
                     ))}
 
 
