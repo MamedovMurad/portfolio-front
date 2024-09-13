@@ -12,10 +12,10 @@
   "dependencies": {
     "@mantine/carousel": "^7.12.1",
     "@mantine/core": "^7.12.1",
-    "@mantine/dates": "^7.12.2",
+    "@mantine/dates": "^7.12.1",
     "@mantine/form": "^7.12.0",
-    "@mantine/hooks": "^7.12.2",
-    "@mantine/modals": "^7.12.2",
+    "@mantine/hooks": "^7.12.1",
+    "@mantine/modals": "^7.12.1",
     "@mantine/notifications": "^7.12.1",
     "@react-oauth/google": "^0.12.1",
     "@tabler/icons": "^3.12.0",
