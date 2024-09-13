@@ -68,6 +68,7 @@ const PubcliView: FunctionComponent<PubcliViewProps> = () => {
                         zIndex={1000}
                         overlayProps={{ radius: 'sm', blur: 2, backgroundOpacity: 0.1 }}
                         loaderProps={{ color: 'pink', type: 'bars' }}
+                        
                     />
                 </div>
             </div>
