@@ -50,17 +50,17 @@ const CertificaPage: FunctionComponent = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {certificates?.map((certificate: any) => (
-                    <div key={certificate.id} className="bg-white border shadow-md rounded-lg overflow-hidden">
-                        <img src={admin_file + certificate?.image} className="w-full h-40 object-cover" />
-                        <div className="p-5">
+                    <div key={certificate.id} className="bg-primary border shadow-md rounded-lg overflow-hidden relative">
+                        <img src={admin_file + certificate?.image} className="w-full h-full object-cover" />
+                        <div className="p-2 absolute bottom-0 left-0 shadow-md bg-white">
                             {/* <h2 className="text-xl font-semibold mb-2">{certificate.name}</h2> */}
                             <p className="text-gray-600 mb-1">Author: {certificate?.author_name}</p>
                             <p className="text-gray-500">Date of Certificate: {dayjs(certificate.created_at + "").format("DD/MM/YY")}</p>
-                            <div className="mt-4">
+                            {/* <div className="mt-4">
                                 <Link target="_blank" to={admin_file + certificate?.pdf} className="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded">
                                     View Certificate
                                 </Link>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 ))}
