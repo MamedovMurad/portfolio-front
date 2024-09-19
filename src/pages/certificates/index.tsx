@@ -50,7 +50,7 @@ const CertificaPage: FunctionComponent = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {certificates?.map((certificate: any) => (
-                    <div key={certificate.id} className="bg-primary border shadow-md rounded-lg overflow-hidden relative">
+                    <Link target="_blank" to={admin_file + certificate?.pdf} key={certificate.id} className="bg-primary border shadow-md rounded-lg overflow-hidden relative">
                         <img src={admin_file + certificate?.image} className="w-full h-full object-cover" />
                         <div className="p-2 absolute bottom-0 left-0 shadow-md bg-white">
                             {/* <h2 className="text-xl font-semibold mb-2">{certificate.name}</h2> */}
@@ -62,7 +62,7 @@ const CertificaPage: FunctionComponent = () => {
                                 </Link>
                             </div> */}
                         </div>
-                    </div>
+                    </Link>
                 ))}
 
                 <LoadingOverlay
