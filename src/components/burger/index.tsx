@@ -26,6 +26,15 @@ export function BurgerMenu() {
         <Menu.Item >
         <Link to={'/contact'}>Contact</Link>
         </Menu.Item>
+        <Menu.Item>
+        <ul className="flex  justify-between w-full container mx-auto gap-x-2 border-t-black py-2 border-t">
+        {['az', 'en', 'ru', 'es'].filter((item)=>localStorage.getItem("lang")?item!==localStorage.getItem('lang'):item!=="az").map((item) => (
+                        <li key={item} className=" text-primary cursor-pointer" 
+                        onClick={()=>{localStorage.setItem("lang",item); window.location.reload()}}> {item}</li>
+                    ))}
+
+                </ul>
+        </Menu.Item>
 
         <Menu.Divider />
 

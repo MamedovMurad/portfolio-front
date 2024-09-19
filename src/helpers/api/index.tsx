@@ -1,13 +1,19 @@
 class HttpClient {
   private _baseURL: string;
   private _headers: Record<string, string>;
+  private _language: string; // Add a language property
 
-  constructor(options: { baseURL?: string; headers?: Record<string, string> } = {}) {
+  constructor(options: { baseURL?: string; headers?: Record<string, string>; language?: string } = {}) {
     this._baseURL = options.baseURL || "https://test.ramanacastle.com/api/";
     this._headers = options.headers || {};
+    this._language = localStorage.getItem('lang') || 'az';// Default to English if no language is set
+    
     if (typeof window !== "undefined") {
       this._headers.Authorization = "Bearer " + localStorage.getItem("agent");
     }
+
+    // Set the Accept-Language header with the initial language value
+    this._headers["Accept-Language"] = this._language;
   }
 
   private static instance: HttpClient;
@@ -18,6 +24,7 @@ class HttpClient {
         headers: {
           "Content-Type": "application/json",
         },
+        language: "en", // You can set a default language here if needed
       });
     }
 
@@ -33,6 +40,13 @@ class HttpClient {
     return this;
   }
 
+  // Method to set language dynamically
+  setLanguage(lang: string) {
+    this._language = lang;
+    this.setHeader("Accept-Language", lang); // Update the Accept-Language header
+    return this;
+  }
+
   private async _fetchJSON(endpoint: string, options: RequestInit = {}) {
     const res = await fetch(this._baseURL + endpoint, {
       ...options,
@@ -42,10 +56,10 @@ class HttpClient {
     if (!res.ok) {
       if (res.status === 401) {
         localStorage.clear();
-        window.location.href="/"
-        throw new Error('Unauthorized: Please login again.');
+        window.location.href = "/";
+        throw new Error("Unauthorized: Please login again.");
       } else {
-        throw new Error('Request failed with status ' + res.status);
+        throw new Error("Request failed with status " + res.status);
       }
     }
 
@@ -56,7 +70,7 @@ class HttpClient {
     return res.json();
   }
 
-  get(endpoint: string,  options: RequestInit = {}) {
+  get(endpoint: string, options: RequestInit = {}) {
     return this._fetchJSON(endpoint, {
       ...options,
       method: "GET",
@@ -85,7 +99,6 @@ class HttpClient {
       formData.append(key, value);
     }
 
-    // Do not set the Content-Type header manually for FormData
     return fetch(this._baseURL + endpoint, {
       headers: { Authorization: "Bearer " + localStorage.getItem("agent") },
       method: "POST",
@@ -95,7 +108,6 @@ class HttpClient {
 
   delete(endpoint: string, options: RequestInit = {}) {
     return this._fetchJSON(endpoint, {
-  
       ...options,
       method: "DELETE",
     });
@@ -103,6 +115,5 @@ class HttpClient {
 }
 
 export const api = HttpClient.getInstance();
-
 export const file_url = "https://test.ramanacastle.com";
 export const admin_file = "https://testadmin.ramanacastle.com";

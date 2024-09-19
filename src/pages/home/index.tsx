@@ -58,6 +58,8 @@ const Home: FunctionComponent<HomeProps> = () => {
         <VideoBanner data={video}/>
        <section className="mt-4">
        <VideoBanner data={certificate} sectionName="Explorer certificates" />
+
+   
        </section>
     </div> 
     }

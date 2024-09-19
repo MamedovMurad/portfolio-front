@@ -1,6 +1,9 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { getcontact } from "../../helpers/api/page";
-
+import insta from "../../assets/instagram.svg";
+import linkedin from "../../assets/in.svg";
+import facebook from "../../assets/fb.svg";
+import wp from "../../assets/whatsapp.svg";
 interface ContactProps {
     
 }
@@ -66,8 +69,20 @@ const Contact: FunctionComponent<ContactProps> = () => {
               </dl>
             </div>
           </div>
-          <form className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-32 " >
+          <form className="px-6  " >
             <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
+       <ul className=" w-full pb-20">
+       <li className="  block text-center mt-4 w-full md:mt-0  bg-white p-10 rounded-lg ">
+                          
+                          <ul className="flex justify-between gap-x-4 mt-2">
+                              <a href=""><img src={wp} className=" w-10" alt="" /></a>
+                              <a href="https://www.instagram.com/biharbor?igsh=MWRwcnAzMDh5M2ZvdQ=="><img className=" w-10" src={insta} alt="" /></a>
+                              <a  href="https://www.linkedin.com/company/biharbor"><img className=" w-10" src={linkedin} alt="" /></a>
+                              <a href=""><img className=" w-10" src={facebook} alt="" /></a>
+                          </ul>
+                      </li>
+       </ul>
+
               <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
          
   
