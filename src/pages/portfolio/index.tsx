@@ -11,38 +11,60 @@ interface PortfolioListProps {
 }
 
 const PortfolioList: FunctionComponent<PortfolioListProps> = () => {
-    const [list, setlist]=useState<any>(null)
+    const [list, setlist] = useState<any>(null)
     const [current, setcurrent] = useState<any>(null);
-    useEffect(() => {
+    const [page, setpage] = useState(1);
+
+    const [isShow, setisShow] = useState(false);
+
+    function getCustomList(isLike?:boolean){
         setlist(null)
-        getList({limit:10,category_id:current, offset:10}).then((data)=>{
-            setlist(data?.data?.data)
+        getList({ limit: 10, category_id: current, offset: page }).then((data) => {
+            if (!list||isLike) {
+                setlist(data?.data?.data)
+            } else {
+                setlist([...list, ...data?.data?.data])
+            }
+
+            setisShow(data?.data?.data?.length>17)
         })
-    }, [current]);
+    }
+    useEffect(() => {
+      
+        getCustomList()
+    }, [current, page]);
 
 
-    
+
+
+
     return (<div className=" container mx-auto pt-10">
         <CarouselUI />
         <h4 className=" text-center my-10 font-semibold text-4xl text-text-primary">Members Portfolios</h4>
         <div className=" mb-5">
-            <Categories callback={setcurrent} current={current}/>
+            <Categories callback={setcurrent} current={current} />
         </div>
-<div className=" relative min-h-80 grid  md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center items-center gap-4">
+        <div className=" relative min-h-80 grid  md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center items-center gap-4">
 
-{list?.map((item:any)=>(
-    <Card title={item.title} author_img={item?.author?.image} img={file_url+item.cover_img} author_name={item?.author?.name} id={item.id}/>
-))}
+            {list?.map((item: any) => (
+                <Card is_like={item?.is_like}
+                    title={item.title} author_img={item?.author?.image}
+                    img={file_url + item.cover_img} author_name={item?.author?.name}
+                    id={item.id} callBack={()=>getCustomList(true)} />
+            ))}
 
 
-<LoadingOverlay
-          visible={!list}
-          zIndex={1000}
-          overlayProps={{ radius: 'sm', blur: 2, backgroundOpacity:0.1 }}
-          loaderProps={{ color: 'pink', type: 'bars' }}
-        />
-</div>
+            <LoadingOverlay
+                visible={!list}
+                zIndex={1000}
+                overlayProps={{ radius: 'sm', blur: 2, backgroundOpacity: 0.1 }}
+                loaderProps={{ color: 'pink', type: 'bars' }}
+            />
 
+        </div>
+        <div className={" text-center w-full block mt-2 " +(isShow?"":"hidden")}>
+            <button onClick={() => setpage(page + 1)} className=" bg-text-primary text-primary font-semibold text-lg py-2 px-5 rounded-md ">See More</button>
+        </div>
     </div>);
 }
 

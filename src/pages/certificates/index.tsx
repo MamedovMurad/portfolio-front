@@ -10,11 +10,12 @@ import { Link } from "react-router-dom";
 
 const CertificaPage: FunctionComponent = () => {
     const [value, setValue] = useState<Date | null>(null)
+    const [page, setpage] = useState(1);
     const formattedDate = value
         ? `${value.getFullYear()}-${(value.getMonth() + 1).toString().padStart(2, "0")}`
         : null;
     console.log(formattedDate);
-
+    const [isShow, setisShow] = useState(false);
     const [certificates, setCertificates] = useState<any>(null);
     const [loading, setLoading] = useState(false);
 
@@ -22,14 +23,18 @@ const CertificaPage: FunctionComponent = () => {
         setLoading(true)
 
 
-        api.get("filter-certificates?date=" + (formattedDate || "")).then((data) => {
-            console.log(data, 'data ');
-            setCertificates(data?.data?.data)
-
+        api.get("filter-certificates?date=" + (formattedDate || "")+"&page="+page).then((data) => {
+            if (certificates) {
+                setCertificates([...certificates,...data?.data?.data])
+            }else{
+                setCertificates(data?.data?.data)
+            }
+       
+            setisShow(data?.data?.data?.length > 35)
         }).finally(() => {
             setLoading(false)
         })
-    }, [formattedDate]);
+    }, [formattedDate,page]);
 
 
 
@@ -72,6 +77,10 @@ const CertificaPage: FunctionComponent = () => {
                     loaderProps={{ color: 'pink', type: 'bars' }}
                 />
             </div>
+
+            <div className={" text-center w-full block mt-2 " +(isShow?"":"hidden")}>
+            <button onClick={() => setpage(page + 1)} className=" bg-text-primary text-primary font-semibold text-lg py-2 px-5 rounded-md ">See More</button>
+        </div>
         </div>
     );
 };

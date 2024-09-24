@@ -4,6 +4,9 @@ import project from "../../../assets/project.png"
 import { IconHeart } from '@tabler/icons-react';
 import { Link, useNavigate } from "react-router-dom";
 import { BurgerMenuPortfolio } from "../../../components/burger/action";
+import { useStore } from "../../../store/aut";
+import { api } from "../../../helpers/api";
+import { notifications } from "@mantine/notifications";
 interface CardProps {
 img?:any,
 title:any,
@@ -11,19 +14,40 @@ id:any
 author_name:any,
 author_img?:string;
 deleteItem?:any;
+editItem?:any;
+is_like:0|1,
+callBack?:()=>void
 }
 
-const Card: FunctionComponent<CardProps> = ({img, title, author_name,id, author_img, deleteItem}) => {
-  console.log(author_name);
+const Card: FunctionComponent<CardProps> = ({img, title, author_name,id, author_img, deleteItem,is_like,callBack,editItem}) => {
+  const { user } = useStore((state) => ({
+    user: state.user,
+
+}));
   const navigate = useNavigate()
   
+  function clickLike(){
+
+    if (!user) {
+      return navigate('/login')
+    }
+  
+    api.post("like",{id}).then(()=>{
+      notifications.show({
+        title: is_like?"Portfolio unliked successfully !":'Portfolio liked successfully !',
+        message: '',
+        })
+
+        callBack&&callBack();
+    })
+  }
   return (<div
   onClick={()=>navigate("/portfolios/"+id)}
     className="block relative cursor-pointer  rounded-lg bg-white text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">
       {
-        deleteItem&& <div onClick={(e)=>e.stopPropagation()} className=" absolute right-1 top-1 z-10 ">
+        deleteItem&& <div onClick={(e)=>e.stopPropagation()} className=" absolute right-1 top-1 z-[1] ">
         
-          <BurgerMenuPortfolio  deleteItem={deleteItem}/>
+          <BurgerMenuPortfolio  deleteItem={deleteItem} editItem={editItem}/>
           </div>
       }
     <div className="relative overflow-hidden bg-cover bg-no-repeat">
@@ -49,7 +73,7 @@ const Card: FunctionComponent<CardProps> = ({img, title, author_name,id, author_
       
         </div>
         <div>
-          <IconHeart/>
+          <IconHeart fill={is_like?"red":""} onClick={(e)=>{e.stopPropagation();clickLike()}}/>
         </div>
       </div>
     </div>

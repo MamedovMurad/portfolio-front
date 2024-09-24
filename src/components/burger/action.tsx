@@ -3,7 +3,7 @@ import {  Menu } from '@mantine/core';
 import { DeletePopUp } from '../pop-up/delete';
 import { IconDots, IconEdit } from '@tabler/icons-react';
 
-export function BurgerMenuPortfolio({deleteItem}:{deleteItem?:any}) {
+export function BurgerMenuPortfolio({deleteItem,editItem}:{deleteItem?:any,editItem?:any}) {
   const [opened, { toggle }] = useDisclosure();
 if (opened) {
   
@@ -20,7 +20,7 @@ if (opened) {
       <Menu.Dropdown>
      
         <Menu.Item className=' w-full bg-text-primary bg-opacity-20 text-text-primary mb-1' >
-         <button  className='w-full flex justify-center h-full '> <IconEdit size={20}/></button>
+         <button onClick={editItem}  className='w-full flex justify-center h-full '> <IconEdit size={20}/></button>
         </Menu.Item>
         <Menu.Item className=' bg-red-200 text-red-800'>
             <DeletePopUp deleteItem={deleteItem}/>
