@@ -22,7 +22,8 @@ const PubcliView: FunctionComponent<PubcliViewProps> = () => {
 
     useEffect(() => {
         show({ id: location?.id ?? "0" }).then((data: any) => {
-            setdata(data?.data)
+            setdata(data?.data);
+            window.scrollTo(0, 0);
         })
 
 
@@ -30,7 +31,7 @@ const PubcliView: FunctionComponent<PubcliViewProps> = () => {
     }, [location?.id]);
 
 
-    console.log(data, 'data');
+    
 
 
     return (<section className=" h-full w-full">

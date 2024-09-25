@@ -52,7 +52,7 @@ export function CarouselUI() {
   // const theme = useMantineTheme();
   // const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const slides = data?.map((item:any) => (
-    <Carousel.Slide key={item.title}>
+    <Carousel.Slide key={item.title} >
       <Card {...item} />
     </Carousel.Slide>
   ));
@@ -60,7 +60,7 @@ export function CarouselUI() {
   return (
     <Carousel
    
-     
+    
       
       align="start"
       slidesToScroll={1}

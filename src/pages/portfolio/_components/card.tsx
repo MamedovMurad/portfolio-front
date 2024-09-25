@@ -41,6 +41,8 @@ const Card: FunctionComponent<CardProps> = ({img, title, author_name,id, author_
         callBack&&callBack();
     })
   }
+
+  
   return (<div
   onClick={()=>navigate("/portfolios/"+id)}
     className="block relative cursor-pointer  rounded-lg bg-white text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">

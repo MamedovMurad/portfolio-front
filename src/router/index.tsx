@@ -21,6 +21,7 @@ import CertifactePage from "../pages/certificates";
 
 
 
+
 const router = createBrowserRouter([
   {
     
@@ -89,66 +90,7 @@ const router = createBrowserRouter([
   { path: "forgot-password", element: <ForgotPassword /> },
   { path: "login", element: <LoginPage /> },
 
-  // {
-  //   path: "/register/verify",
-  //   element: (<VerifyPage />),
-  // },
 
-  {
-   
-
-    //       {
-    //         path: '/roles',
-    //         element: <RolePages />
-    //       },
-    //       {
-    //         path: '/branches',
-    //         element: <BranchPage />
-    //       },
-    //       {
-    //         path: '/positions',
-    //         element: <Positions />
-    //       },
-    //       {
-    //         path: 'customers',
-    //         element: <Customerpage />,
-     
-    //       },
-    //       {
-    //         path: 'customer/create',
-    //         element: <AddCustomer />,
-     
-    //       },
-    //       {
-    //         path: 'customer/update/:id',
-    //         element: <AddCustomer />,
-     
-    //       },
-    //       {
-    //         path:'/hotel-src',
-    //         element:<OtelSrc/>
-    //       },
-    //       {
-    //         path:'/hotels',
-    //         element:<OtelPage/>
-    //       },
-    //       {
-    //         path:'/departments',
-    //         element:<DepartmentPage/>
-    //       }
-    //       // { path: "/settings", 
-    //       //             element: <Settings/>, 
-    //       //                       children:[{path:"/settings/my-profile", element:<MyProfile/>},
-    //       //                       {path:"/settings/notfications",element:<Notfications/>},
-    //       //                       {path:"/settings/visibility", element:<Visibility/>},
-    //       //                       {path:"/settings/login-details", element:<LoginDetails/>}] },
-
-    //       // { path: "profile", element: <ProfilePage /> },
-    //       // { path: "easy-apply", element: <EasyApply /> },
-    //     ],
-    //   },
-    // ],
-  },
 
   { path: "*", element: <Navigate to={"/login"} /> },
 ]);
@@ -158,7 +100,10 @@ export function RouterApp() {
     <Suspense
 
     >
+  
       <RouterProvider router={router} />
+      
+    
     </Suspense>
   );
 }

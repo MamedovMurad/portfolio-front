@@ -11,11 +11,14 @@ const theme = createTheme({
   });
 
 const App = () => (
+
     <MantineProvider theme={theme}>
+       
         <Notifications />
         <ModalsProvider/>
 <div className=" bg-primary md:h-full text-white"><RouterApp/></div>
 </MantineProvider>
+
 )
 
     
