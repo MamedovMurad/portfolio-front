@@ -72,7 +72,7 @@ const Contact: FunctionComponent<ContactProps> = () => {
           <form className="px-6  " >
             <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
        <ul className=" w-full pb-20">
-       <li className="  block text-center mt-4 w-full md:mt-0  bg-white p-10 rounded-lg ">
+       <li className="  block text-center mt-4 w-full md:mt-0  bg-primary p-10 rounded-lg ">
                           
                           <ul className="flex justify-between gap-x-4 mt-2">
                               <a href=""><img src={wp} className=" w-10" alt="" /></a>

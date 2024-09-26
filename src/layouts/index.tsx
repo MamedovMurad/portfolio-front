@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import img from "../assets/main-logo.svg";
-import dark from "../assets/logo-dark.svg";
+// import dark from "../assets/logo-dark.svg";
 import insta from "../assets/instagram.svg";
 import linkedin from "../assets/in.svg";
 import facebook from "../assets/fb.svg";
@@ -100,12 +100,12 @@ const MainLayout: FunctionComponent<MainLayoutProps> = () => {
 
 
 
-            <footer className=" bg-text-primary bg-opacity-50 text-dark py-10 mt-20">
+            <footer className=" bg-dark  text-white py-10 mt-20">
                 <div className=" container mx-auto px-4 md:px-0">
                     <ul className="flex justify-between font-semibold text-lg flex-wrap ">
-                        <li> <Link to={'/'}><img src={dark} className=" w-28 md:w-40" alt="" /></Link> </li>
+                        <li> <Link to={'/'}><img src={img} className=" w-28 md:w-40" alt="" /></Link> </li>
                         <li className=" w-4/6 md:w-fit flex flex-col  items-end md:block pr-3 md:pr-0">
-                            <h4 className=" font-semibold text-xl text-primary mb-3">Navigation</h4>
+                            <h4 className=" font-semibold text-xl text-white mb-3">Navigation</h4>
                             <ul>
                                 <li className=" block"> <Link to={'/'}>Home</Link></li>
                                 <li className=" block"> <Link to={'/about'}>About</Link></li>

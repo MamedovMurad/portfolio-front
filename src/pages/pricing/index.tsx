@@ -15,11 +15,11 @@ const Pricing: FunctionComponent<PricingProps> = () => {
   }, []);
   return (<div className="pt-5 bg-gray-900" id="pricing">
     <div className="mx-auto pb-20 mt-4 max-w-7xl px-6 lg:px-8">
-      <div className="mx-auto max-w-4xl text-center">
+      {/* <div className="mx-auto max-w-4xl text-center">
         <h1 className="text-base font-semibold leading-7 text-indigo-400">Pricing</h1>
         <p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">Whether it's just you, or your entire
           team - we've got you covered.</p>
-      </div>
+      </div> */}
       <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-300">Choose the product that works best</p>
       <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
 

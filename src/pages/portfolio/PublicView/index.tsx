@@ -74,6 +74,25 @@ const PubcliView: FunctionComponent<PubcliViewProps> = () => {
                     />
                 </div>
             </div>
+
+            <div>
+                <h4 className=" text-3xl font-semibold text-center my-10 ">{data?.author?.name}'s Certificates</h4>
+                <div className=" relative min-h-80 grid  md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center items-center gap-4">
+
+                    {data?.other_portfolios?.data?.map((item: any) => (
+                        <Card is_like={item?.is_like} key={item?.id} author_img={item?.author?.image} title={item.title} img={file_url + item.cover_img} author_name={item?.author?.name} id={item.id} />
+                    ))}
+
+
+                    <LoadingOverlay
+                        visible={!data?.other_portfolios}
+                        zIndex={1000}
+                        overlayProps={{ radius: 'sm', blur: 2, backgroundOpacity: 0.1 }}
+                        loaderProps={{ color: 'pink', type: 'bars' }}
+
+                    />
+                </div>
+            </div>
         </div>
         
     </section>)

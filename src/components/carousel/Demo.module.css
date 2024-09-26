@@ -1,11 +1,14 @@
 .card {
-    height: 570px;
+    height: 562px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
     background-size: cover;
     background-position: center;
+   max-width: 1000px;
+   margin:0 auto
+   
   }
   
   .title {

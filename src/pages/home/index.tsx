@@ -43,10 +43,10 @@ const Home: FunctionComponent<HomeProps> = () => {
         <div>
         <Banner data={banner} />
 
-        <div className=" bg-white py-4 md:py-20 ">
+        <div className=" bg-dark py-4 md:py-20  ">
             <div className="container mx-auto">
                     <div className="md:flex justify-between items-center px-4 md:px-0">
-                        <div className=" text-primary">
+                        <div className=" text-white">
                             <h4 className=" md:text-4xl text-2xl font-semibold">{before?.title}</h4>
                             <p className=" md:mt-10 mt-5">{before?.description}</p>
                         </div>

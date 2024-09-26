@@ -9,7 +9,7 @@ export default {
     extend: {    colors: {
       dark:"rgba(30, 33, 38, 1)",
       primary:"rgba(31, 41, 55, 1)",
-      "text-primary":"rgb(129, 195, 201)"
+      "text-primary":"#f2f2f2"
     },},
   },
   plugins: [],
