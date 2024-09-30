@@ -23,9 +23,10 @@ function Card({ image, title , link}: CardProps) {
       p="xl"
       radius="md"
       style={{ backgroundImage: `url(${admin_file +image})` }}
-      className={classes.card}
+      className={classes.card+" "}
     >
-      <div>
+      <div className=' rounded-md shadow-lg bg-primary bg-opacity-5 w-fit py-2 px-4'>
+        <div>
         {/* <Text className={classes.category} size="xs">
           {category}
         </Text> */}
@@ -33,9 +34,10 @@ function Card({ image, title , link}: CardProps) {
           {title}
         </Title>
       </div>
-      <Button variant="white" color="dark">
-        <Link to={link}>Read article</Link>
+      <Button  variant='fill' className=' shadow bg-text-primary text-primary mt-1  outline-none hover:bg-primary hover:text-text-primary'>
+        <Link to={link}>Read More</Link>
       </Button>
+      </div>
     </Paper>
   );
 }

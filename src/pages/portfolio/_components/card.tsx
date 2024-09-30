@@ -16,10 +16,11 @@ author_img?:string;
 deleteItem?:any;
 editItem?:any;
 is_like:0|1,
-callBack?:()=>void
+callBack?:()=>void;
+likes_count?:number
 }
 
-const Card: FunctionComponent<CardProps> = ({img, title, author_name,id, author_img, deleteItem,is_like,callBack,editItem}) => {
+const Card: FunctionComponent<CardProps> = ({img, title, author_name,id, author_img, deleteItem,is_like,callBack,editItem,likes_count}) => {
   const { user } = useStore((state) => ({
     user: state.user,
 
@@ -74,7 +75,10 @@ const Card: FunctionComponent<CardProps> = ({img, title, author_name,id, author_
             </Link>
       
         </div>
-        <div>
+        <div className=" flex">
+          {
+            likes_count!==0&& <span className=" mr-1">{likes_count}</span>
+          }
           <IconHeart fill={is_like?"red":""} onClick={(e)=>{e.stopPropagation();clickLike()}}/>
         </div>
       </div>

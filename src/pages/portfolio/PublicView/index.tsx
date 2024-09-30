@@ -56,8 +56,8 @@ const PubcliView: FunctionComponent<PubcliViewProps> = () => {
 
                 <p>{data?.desc}</p>
             </div>
-            <div>
-                <h4 className=" text-3xl font-semibold text-center my-10 ">Other Portfolios</h4>
+            <div className=" mt-10">
+                {/* <h4 className=" text-3xl font-semibold text-center my-10 ">Other Portfolios</h4> */}
                 <div className=" relative min-h-80 grid  md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center items-center gap-4">
 
                     {data?.other_portfolios?.data?.map((item: any) => (
@@ -75,8 +75,8 @@ const PubcliView: FunctionComponent<PubcliViewProps> = () => {
                 </div>
             </div>
 
-            <div>
-                <h4 className=" text-3xl font-semibold text-center my-10 ">{data?.author?.name}'s Certificates</h4>
+            <div className=" mt-10">
+                {/* <h4 className=" text-3xl font-semibold text-center my-10 ">{data?.author?.name}'s Certificates</h4> */}
                 <div className=" relative min-h-80 grid  md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center items-center gap-4">
 
                     {data?.other_portfolios?.data?.map((item: any) => (

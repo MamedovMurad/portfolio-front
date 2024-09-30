@@ -110,7 +110,7 @@ const MainLayout: FunctionComponent<MainLayoutProps> = () => {
                                 <li className=" block"> <Link to={'/'}>Home</Link></li>
                                 <li className=" block"> <Link to={'/about'}>About</Link></li>
                                 <li className="  block"> <Link to={'/pricing'}>Courses</Link></li>
-                                <li className="  block"> <Link to={'/portfolios'}>portfolios</Link></li>
+                                <li className="  block"> <Link to={'/portfolios'}>Portfolios</Link></li>
                                 <li className="  block"> <Link to={'contact'}>Contact</Link></li>
                             </ul>
                         </li>

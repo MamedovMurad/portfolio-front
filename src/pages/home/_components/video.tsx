@@ -7,7 +7,7 @@ data?:any,
 sectionName?:string
 }
 
-const VideoBanner: FunctionComponent<videoBannerProps> = ({data, sectionName="Explorer courses"}) => {
+const VideoBanner: FunctionComponent<videoBannerProps> = ({data, sectionName="Explore courses"}) => {
     return (<div className=" bg-text-primary md:py-20 py-10">
         <div className="container mx-auto md:h-full">
             <div className="md:flex items-center justify-center  gap-x-4 md:h-80">

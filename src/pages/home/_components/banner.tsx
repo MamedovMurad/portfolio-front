@@ -13,7 +13,7 @@ const Banner: FunctionComponent<BannerProps> = ({data}) => {
                 <p className="  md:my-10 my-3 md:w-5/12 md:text-base text-base">
                     {data?.description}</p>
 
-                    <Link to={'/pricing'} className=" bg-primary text-white block font-semibold w-6/12 py-2 text-center rounded "> Explorer courses</Link>
+                    <Link to={'/pricing'} className=" bg-primary text-white block font-semibold w-6/12 py-2 text-center rounded "> Explore courses</Link>
             </div>
             <div className=" flex md:block justify-end">
                 <img src={admin_file+data?.image} className=" md:w-[600px] w-52" alt="" />

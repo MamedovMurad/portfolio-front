@@ -13,6 +13,13 @@ const Pricing: FunctionComponent<PricingProps> = () => {
       setdata(data?.data)
     })
   }, []);
+
+  const sendMessage = (message:string) => {
+    const text = `Salam mən *${message}* təlimlə maraqlanıram.
+Zəhmət olmasa ətraflı məlumat verərdiniz`
+    const url = `https://wa.me/+994504410308?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
+  };
   return (<div className="pt-5 bg-gray-900" id="pricing">
     <div className="mx-auto pb-20 mt-4 max-w-7xl px-6 lg:px-8">
       {/* <div className="mx-auto max-w-4xl text-center">
@@ -33,9 +40,8 @@ const Pricing: FunctionComponent<PricingProps> = () => {
               {/* <p className="mt-6 flex items-baseline gap-x-1">
   <span className="text-4xl font-bold tracking-tight text-white">€ 10 / unit</span><span className="text-sm font-semibold leading-6 text-gray-300"></span>
 </p> */}
-              <a href="/order" aria-describedby="product1"
-                className="bg-white/10 transition-colors text-white hover:bg-white/20 focus-visible:outline-white mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Order
-                Now</a>
+              <a href="#" aria-describedby="product1" onClick={()=>sendMessage(item?.title)}
+                className="bg-white/10 transition-colors text-white hover:bg-white/20 focus-visible:outline-white mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Apply</a>
               <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-300 xl:mt-10">
                 {item?.price?.map((price: any) => (
                   <li className="flex gap-x-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
@@ -58,9 +64,8 @@ const Pricing: FunctionComponent<PricingProps> = () => {
               {/* <p className="mt-6 flex items-baseline gap-x-1">
                 <span className="text-4xl font-bold tracking-tight text-white">€ 20 / unit</span><span className="text-sm font-semibold leading-6 text-gray-300"></span>
               </p> */}
-              <a href="/order" aria-describedby="product2"
-                className="bg-indigo-500 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline-indigo-500 mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Order
-                Now</a>
+              <a href="#" onClick={()=>sendMessage(item?.title)} aria-describedby="product2"
+                className="bg-indigo-500 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline-indigo-500 mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Apply</a>
               <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-300 xl:mt-10">
                 {item?.price?.map((price: any) => (
                   <li className="flex gap-x-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"

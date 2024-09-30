@@ -57,7 +57,7 @@ const Home: FunctionComponent<HomeProps> = () => {
 
         <VideoBanner data={video}/>
        <section className="mt-4">
-       <VideoBanner data={certificate} sectionName="Explorer certificates" />
+       <VideoBanner data={certificate} sectionName="Explore certificates" />
 
    
        </section>
