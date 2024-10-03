@@ -47,8 +47,8 @@ const MainLayout: FunctionComponent<MainLayoutProps> = () => {
         <>   <header className=" mb-20 md:mb-32">
             <div className=" flex flex-col items-center justify-center fixed top-0 w-full md:h-32 h-20 bg-dark z-10 ">
                 <ul className=" hidden md:flex  justify-end w-full container mx-auto gap-x-2">
-                    {['az', 'en', 'ru', 'es'].filter((item)=>localStorage.getItem("lang")?item!==localStorage.getItem('lang'):item!=="az").map((item) => (
-                        <li key={item}   onClick={()=>{localStorage.setItem("lang",item); window.location.reload()}} className=" text-text-primary cursor-pointer uppercase"> {item}</li>
+                    {['az', 'en', 'ru', 'es'].map((item) => (
+                        <li key={item}   onClick={()=>{localStorage.setItem("lang",item); window.location.reload()}} className={" text-text-primary cursor-pointer uppercase " +(item===localStorage.getItem("lang")?" border border-text-primary px-1 rounded":"")}> {item}</li>
                     ))}
 
                 </ul>

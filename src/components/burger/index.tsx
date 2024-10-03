@@ -18,7 +18,7 @@ export function BurgerMenu() {
           <Link to={'/about'}>About</Link>
         </Menu.Item>
         <Menu.Item >
-        <Link to={'/pricing'}>Pricing</Link>
+        <Link to={'/pricing'}>Courses</Link>
         </Menu.Item>
         <Menu.Item >
         <Link to={'/portfolios'}>Portfolios</Link>
@@ -28,8 +28,8 @@ export function BurgerMenu() {
         </Menu.Item>
         <Menu.Item>
         <ul className="flex  justify-between w-full container mx-auto gap-x-2 border-t-black py-2 border-t">
-        {['az', 'en', 'ru', 'es'].filter((item)=>localStorage.getItem("lang")?item!==localStorage.getItem('lang'):item!=="az").map((item) => (
-                        <li key={item} className=" text-primary cursor-pointer" 
+        {['az', 'en', 'ru', 'es'].map((item) => (
+                        <li key={item} className={" text-primary cursor-pointer " + (item===localStorage.getItem("lang")?" border border-primary px-1 rounded":"")}
                         onClick={()=>{localStorage.setItem("lang",item); window.location.reload()}}> {item}</li>
                     ))}
 
