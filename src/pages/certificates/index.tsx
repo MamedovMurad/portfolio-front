@@ -4,7 +4,8 @@ import { MonthPickerInput } from '@mantine/dates';
 import '@mantine/dates/styles.css';
 import dayjs from 'dayjs';
 import { LoadingOverlay } from "@mantine/core";
-import { Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { ShowCerticate } from "../../components/modal/showCertificate";
 
 
 
@@ -36,8 +37,20 @@ const CertificaPage: FunctionComponent = () => {
         })
     }, [formattedDate,page]);
 
+    const [searchParams,setSearchParams] = useSearchParams();
+    const src =  searchParams.get("item")
+    const deleteSrc = ()=>{
+        searchParams.delete("item")
+        setSearchParams(searchParams);
+    }
+    const addSrc=(value:string)=>{
+        const newSearchParams = new URLSearchParams(searchParams);
+        newSearchParams.set("item",value)
+     
+        setSearchParams(newSearchParams)
+    }
 
-
+    
     return (
         <div className="container mx-auto py-10 px-4 md:px-0">
             <h1 className="text-3xl font-bold mb-8 text-center">Members Certificates</h1>
@@ -55,7 +68,8 @@ const CertificaPage: FunctionComponent = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {certificates?.map((certificate: any) => (
-                    <Link target="_blank" to={admin_file + certificate?.pdf} key={certificate.id} className="bg-primary border shadow-md rounded-lg overflow-hidden relative">
+                    <div  key={certificate.id}
+                    onClick={()=>addSrc(admin_file + certificate?.pdf)} className="bg-primary border shadow-md rounded-lg overflow-hidden relative">
                         <img src={admin_file + certificate?.image} className="w-full h-full object-cover" />
                         <div className="p-2 absolute bottom-0 left-0 shadow-md bg-white">
                             {/* <h2 className="text-xl font-semibold mb-2">{certificate.name}</h2> */}
@@ -67,7 +81,7 @@ const CertificaPage: FunctionComponent = () => {
                                 </Link>
                             </div> */}
                         </div>
-                    </Link>
+                    </div>
                 ))}
 
                 <LoadingOverlay
@@ -81,6 +95,8 @@ const CertificaPage: FunctionComponent = () => {
             <div className={" text-center w-full block mt-2 " +(isShow?"":"hidden")}>
             <button onClick={() => setpage(page + 1)} className=" bg-text-primary text-primary font-semibold text-lg py-2 px-5 rounded-md ">See More</button>
         </div>
+
+<ShowCerticate src={src||undefined} deleteSrc={deleteSrc}/>
         </div>
     );
 };
