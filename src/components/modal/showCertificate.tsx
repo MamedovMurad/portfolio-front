@@ -22,7 +22,7 @@ useEffect(() => {
     return (
         <>
             <Modal size={'lg'} opened={opened} onClose={closeAll} title="Certificates" >
-                  <iframe  src={src} className=' w-full h-[400px]' ></iframe>
+                  <iframe  src={src} className=' w-full h-full md:h-[400px] object-contain' ></iframe>
             </Modal>
 
         </>
