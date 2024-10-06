@@ -21,18 +21,11 @@ useEffect(() => {
 
     return (
         <>
-            <Modal size={"xl"} opened={opened} onClose={closeAll} title="Certificates" >
+            <Modal size={"xl"} opened={opened} onClose={closeAll}  >
             <div className="relative w-full overflow-hidden" style={{ paddingTop: "80%" }}>
-      <iframe
-        src={src}
-        title="PDF Viewer"
-        className="absolute top-0 left-0 w-full h-full border-none"
-        style={{
-          height: "100vh", // Ensures full height on mobile
-          width: "100%",   // Full width
-          overflow: "hidden", // Hides any potential overflow
-        }}
-      />
+            <iframe src={src} className=' fixed top-0 left-0 bottom-0 right-0 w-full h-full border-0 overflow-hidden z-30' >
+    Your browser doesn't support iframes
+</iframe>
     </div>
                 
             </Modal>
