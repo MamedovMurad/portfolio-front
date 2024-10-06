@@ -22,13 +22,13 @@ useEffect(() => {
     return (
         <>
             <Modal size={'xl'} opened={opened} onClose={closeAll} title="Certificates" >
-            <div className="relative pb-[56.25%] h-0 overflow-hidden">
-            <iframe
+            <div className="relative h-0 pb-[56.25%] overflow-hidden">
+      <iframe
         src={src}
         title="PDF Viewer"
-        className="absolute top-0 left-0 w-full h-full md:h-[400px] border-none"
+        className="absolute top-0 left-0 w-full h-full border-none block md:min-h-[500px] sm:min-h-[300px]"
       />
-            </div>
+    </div>
                 
             </Modal>
 
