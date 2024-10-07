@@ -23,7 +23,7 @@ useEffect(() => {
         <>
             <Modal size={"xl"} opened={opened} onClose={closeAll}  >
             <div className="relative w-full overflow-hidden" style={{ paddingTop: "80%" }}>
-            <iframe src={src} className=' fixed top-0 left-0 bottom-0 right-0 w-full h-screen md:h-full border-0 overflow-hidden z-30' >
+            <iframe src={src}  className=' fixed top-0 left-0 bottom-0 right-0 w-72 h-screen md:h-full border-0 overflow-hidden z-30' >
     Your browser doesn't support iframes
 </iframe>
     </div>
