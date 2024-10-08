@@ -49,7 +49,7 @@ const Card: FunctionComponent<CardProps> = ({img, title, author_name,id, author_
         await navigator.share({
           title: 'Share this awesome content!',
           text: 'Check out this website!',
-          url: window.location.hostname+path,
+          url: path,
         });
         console.log('Content shared successfully');
       } catch (error) {
