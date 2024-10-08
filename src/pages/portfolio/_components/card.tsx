@@ -43,6 +43,22 @@ const Card: FunctionComponent<CardProps> = ({img, title, author_name,id, author_
     })
   }
 
+  const handleShare = async (path:string) => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Share this awesome content!',
+          text: 'Check out this website!',
+          url: window.location.hostname+path,
+        });
+        console.log('Content shared successfully');
+      } catch (error) {
+        console.error('Error sharing:', error);
+      }
+    } else {
+      alert('Share feature is not supported in your browser.');
+    }
+  }
   
   return (<div
   onClick={()=>navigate("/portfolios/"+id)}
@@ -62,7 +78,7 @@ const Card: FunctionComponent<CardProps> = ({img, title, author_name,id, author_
     <div className="p-3 bg-dark">
       <div className="flex justify-between items-center mb-1">
         <h5>{title}</h5>
-        <span><img src={share} width={15} alt="" /></span>
+        <span onClick={(e)=>{e.stopPropagation();handleShare("/portfolios/"+id)}} className=" cursor-pointer"><img src={share} width={15} alt="" /></span>
       </div>
       <div className=" flex justify-between items-center">
         <div className=" flex items-center gap-x-1">

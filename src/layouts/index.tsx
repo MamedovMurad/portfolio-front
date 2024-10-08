@@ -117,7 +117,7 @@ const MainLayout: FunctionComponent<MainLayoutProps> = () => {
                         <li className=" w-full text-center mt-4 md:w-fit md:mt-0 ">
                             <a href="mailto:info@biharbor.com">info@biharbor.com</a>
                             <ul className="flex justify-center gap-x-4 mt-2">
-                                <a href=""><img src={wp} alt="" /></a>
+                                <a href="https://wa.me/+994559050308"><img src={wp} alt="" /></a>
                                 <a href="https://www.instagram.com/biharbor?igsh=MWRwcnAzMDh5M2ZvdQ=="><img src={insta} alt="" /></a>
                                 <a href="https://www.linkedin.com/company/biharbor"><img src={linkedin} alt="" /></a>
                                 <a href=""><img src={facebook} alt="" /></a>

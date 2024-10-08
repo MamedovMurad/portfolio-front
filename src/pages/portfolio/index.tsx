@@ -41,7 +41,7 @@ const PortfolioList: FunctionComponent<PortfolioListProps> = () => {
 
     return (<div className=" container mx-auto pt-10">
         <CarouselUI />
-        <h4 className=" text-center my-10 font-semibold text-4xl text-text-primary">Members Portfolios</h4>
+        <h4 className=" text-center my-10 font-semibold text-4xl text-text-primary">Dashboards</h4>
         {/* <div className=" mb-5">
             <Categories callback={setcurrent} current={current} />
         </div> */}

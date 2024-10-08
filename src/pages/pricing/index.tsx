@@ -17,7 +17,7 @@ const Pricing: FunctionComponent<PricingProps> = () => {
   const sendMessage = (message:string) => {
     const text = `Salam mən *${message}* təlimlə maraqlanıram.
 Zəhmət olmasa ətraflı məlumat verərdiniz`
-    const url = `https://wa.me/+994504410308?text=${encodeURIComponent(text)}`;
+    const url = `https://wa.me/+994559050308?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
   };
   return (<div className="pt-5 bg-gray-900" id="pricing">
