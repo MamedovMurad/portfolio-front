@@ -40,7 +40,12 @@ function CreatePortfolio() {
 
   function onSubmit(params:any){
     console.log(params);
-
+    if (!files) {
+      return    notifications.show({
+        title: 'The file is required !',
+        message: '',
+      })
+    }
     create({...params, cover_img:files}).then((data:any)=>{
      console.log(data);
      form.reset()

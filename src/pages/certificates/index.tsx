@@ -26,7 +26,13 @@ const CertificaPage: FunctionComponent = () => {
 
         api.get("filter-certificates?date=" + (formattedDate || "")+"&page="+page).then((data) => {
             if (certificates) {
-                setCertificates([...certificates,...data?.data?.data])
+                if (formattedDate) {
+                     setCertificates(data?.data?.data)
+                }
+                else{
+                    setCertificates([...certificates,...data?.data?.data])
+                }
+             
             }else{
                 setCertificates(data?.data?.data)
             }
@@ -62,7 +68,7 @@ const CertificaPage: FunctionComponent = () => {
                         placeholder="Filter the certificates"
                         clearable
                         value={value}
-                        onChange={setValue}
+                        onChange={(data)=>{setValue(data); setpage(1)}}
                     />
                 </div>
             </div>
