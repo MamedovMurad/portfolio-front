@@ -27,7 +27,7 @@ const PortfolioList: FunctionComponent<PortfolioListProps> = () => {
                 setlist([...list, ...data?.data?.data])
             }
 
-            setisShow(data?.data?.data?.length>17)
+            setisShow(data?.data?.data?.length>15)
         })
     }
     useEffect(() => {
