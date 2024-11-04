@@ -4,7 +4,7 @@ class HttpClient {
   private _language: string; // Add a language property
 
   constructor(options: { baseURL?: string; headers?: Record<string, string>; language?: string } = {}) {
-    this._baseURL = options.baseURL || "https://test.ramanacastle.com/api/";
+    this._baseURL = options.baseURL || "https://biharbor-api.honeybal.net/";
     this._headers = options.headers || {};
     this._language = localStorage.getItem('lang') || 'az';// Default to English if no language is set
     
@@ -115,5 +115,5 @@ class HttpClient {
 }
 
 export const api = HttpClient.getInstance();
-export const file_url = "https://test.ramanacastle.com";
-export const admin_file = "https://testadmin.ramanacastle.com";
+export const file_url = "https://biharbor-api.honeybal.net";
+export const admin_file = "https://www.testadmin.ramanacastle.com/admin";
