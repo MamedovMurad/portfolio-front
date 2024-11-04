@@ -4,7 +4,7 @@ class HttpClient {
   private _language: string; // Add a language property
 
   constructor(options: { baseURL?: string; headers?: Record<string, string>; language?: string } = {}) {
-    this._baseURL = options.baseURL || "https://biharbor-api.honeybal.net/";
+    this._baseURL = options.baseURL || "https://biharbor-api.honeybal.net/api/";
     this._headers = options.headers || {};
     this._language = localStorage.getItem('lang') || 'az';// Default to English if no language is set
     
