@@ -116,4 +116,4 @@ class HttpClient {
 
 export const api = HttpClient.getInstance();
 export const file_url = "https://biharbor-api.honeybal.net";
-export const admin_file = "https://www.testadmin.ramanacastle.com/admin";
+export const admin_file = "https://biharbor.honeybal.net/admin";
