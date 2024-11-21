@@ -18,9 +18,10 @@ const PortfolioList: FunctionComponent<PortfolioListProps> = () => {
     const [isShow, setisShow] = useState(false);
 
     function getCustomList(isLike?:boolean){
-        setcurrent
+        
+         setcurrent
         setlist(null)
-        getList({ limit: 10, category_id: current, offset: page }).then((data) => {
+        getList({ limit: 10, category_id: current, offset: isLike?1: page }).then((data) => {
             if (!list||isLike) {
                 setlist(data?.data?.data)
             } else {
