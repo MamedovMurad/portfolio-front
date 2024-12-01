@@ -22,7 +22,7 @@ const PortfolioList: FunctionComponent<PortfolioListProps> = () => {
     function getCustomList(){
         
          setloading(true)
-      
+      setcurrent
       
         getList({ limit: 10, category_id: current, offset:  page }).then((data) => {
             if (!list) {
