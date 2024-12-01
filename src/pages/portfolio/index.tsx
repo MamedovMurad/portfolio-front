@@ -14,21 +14,24 @@ const PortfolioList: FunctionComponent<PortfolioListProps> = () => {
     const [list, setlist] = useState<any>(null)
     const [current, setcurrent] = useState<any>(null);
     const [page, setpage] = useState(1);
+    const [loading, setloading] = useState(false)
+
 
     const [isShow, setisShow] = useState(false);
 
-    function getCustomList(isLike?:boolean){
+    function getCustomList(){
         
-         setcurrent
-        setlist(null)
-        getList({ limit: 10, category_id: current, offset: isLike?1: page }).then((data) => {
-            if (!list||isLike) {
+         setloading(true)
+      
+      
+        getList({ limit: 10, category_id: current, offset:  page }).then((data) => {
+            if (!list) {
                 setlist(data?.data?.data)
             } else {
                 setlist([...list, ...data?.data?.data])
             }
-
-            setisShow(data?.data?.data?.length>15)
+            setloading(false)
+            setisShow(data?.data?.data?.length>14)
         })
     }
     useEffect(() => {
@@ -54,12 +57,12 @@ const PortfolioList: FunctionComponent<PortfolioListProps> = () => {
                     is_like={item?.is_like}
                     title={item.title} author_img={item?.author?.image}
                     img={file_url + item.cover_img} author_name={item?.author?.name}
-                    id={item.id} callBack={()=>getCustomList(true)} />
+                    id={item.id} callBack={()=>''} />
             ))}
 
 
             <LoadingOverlay
-                visible={!list}
+                visible={loading}
                 zIndex={1000}
                 overlayProps={{ radius: 'sm', blur: 2, backgroundOpacity: 0.1 }}
                 loaderProps={{ color: 'pink', type: 'bars' }}
@@ -67,7 +70,7 @@ const PortfolioList: FunctionComponent<PortfolioListProps> = () => {
 
         </div>
         <div className={" text-center w-full block mt-2 " +(isShow?"":"hidden")}>
-            <button onClick={() => setpage(page + 1)} className=" bg-text-primary text-primary font-semibold text-lg py-2 px-5 rounded-md ">See More</button>
+            <button onClick={() => {setpage(page + 1);}} className=" bg-text-primary text-primary font-semibold text-lg py-2 px-5 rounded-md ">See More</button>
         </div>
     </div>);
 }
