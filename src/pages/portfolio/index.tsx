@@ -1,78 +1,27 @@
-import { FunctionComponent, useEffect, useState } from "react";
-import { CarouselUI } from "../../components/carousel";
-import Card from "./_components/card";
-// import Categories from "../../components/categories";
+import { api } from "."
 
-import { getList } from "../../helpers/api/portfolio";
-import { file_url } from "../../helpers/api";
-import { LoadingOverlay } from "@mantine/core";
-interface PortfolioListProps {
-
+const getList = (params: { limit: number, offset: number, isActive?:boolean ,category_id?:string|number,search?:string }) => {
+    return api.get(`portfolios?category_id=${(params?.category_id||"")}&limit=${params.limit}&page=${params.offset}&search=${params.search||""}`)
 }
-
-const PortfolioList: FunctionComponent<PortfolioListProps> = () => {
-    const [list, setlist] = useState<any>(null)
-    const [current, setcurrent] = useState<any>(null);
-    const [page, setpage] = useState(1);
-    const [loading, setloading] = useState(false)
-
-
-    const [isShow, setisShow] = useState(false);
-
-    function getCustomList(){
-        
-         setloading(true)
-      setcurrent
-      
-        getList({ limit: 10, category_id: current, offset:  page }).then((data) => {
-            if (!list) {
-                setlist(data?.data?.data)
-            } else {
-                setlist([...list, ...data?.data?.data])
-            }
-            setloading(false)
-            setisShow(data?.data?.data?.length>14)
-        })
+const show = (params: { id:string}) => {
+    return api.get(`portfolios/`+params.id)
+}
+const create = (params:any)=>{
+    console.log(params);
+    
+    return api.postWithFormData('portfolios', params)
     }
-    useEffect(() => {
-      
-        getCustomList()
-    }, [current, page]);
-
-
-
-
-
-    return (<div className=" container mx-auto pt-10">
-        <CarouselUI />
-        <h4 className=" text-center my-10 font-semibold text-4xl text-text-primary">Dashboards</h4>
-        {/* <div className=" mb-5">
-            <Categories callback={setcurrent} current={current} />
-        </div> */}
-        <div className=" relative min-h-80 grid  md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center items-center gap-4">
-
-            {list?.map((item: any) => (
-                <Card 
-                    likes_count={JSON.parse(item.likes)?.length||0}
-                    is_like={item?.is_like}
-                    title={item.title} author_img={item?.author?.image}
-                    img={file_url + item.cover_img} author_name={item?.author?.name}
-                    id={item.id} callBack={()=>''} />
-            ))}
-
-
-            <LoadingOverlay
-                visible={loading}
-                zIndex={1000}
-                overlayProps={{ radius: 'sm', blur: 2, backgroundOpacity: 0.1 }}
-                loaderProps={{ color: 'pink', type: 'bars' }}
-            />
-
-        </div>
-        <div className={" text-center w-full block mt-2 " +(isShow?"":"hidden")}>
-            <button onClick={() => {setpage(page + 1);}} className=" bg-text-primary text-primary font-semibold text-lg py-2 px-5 rounded-md ">See More</button>
-        </div>
-    </div>);
+    const remove = (params:{id:number})=>{
+        return api.delete("roles/"+params.id)
+    }
+    const update =(params:{name:string, privilegeLabels:string[], id?:number})=>{
+        return api.put('roles/'+params.id, params)
+    }
+export {
+    getList,
+    create,
+    show,
+    update,
+    remove
+   
 }
-
-export default PortfolioList;
